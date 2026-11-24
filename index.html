@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KX76XF8R');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teoría del riesgo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="La matemática de las pérdidas aleatorias: utilidad esperada y seguro óptimo, principios de prima, modelos individual y colectivo, reaseguro y solvencia, teoría de la ruina de Cramér-Lundberg, valores extremos, valor en riesgo y medidas coherentes de riesgo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KX76XF8R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="wrap" data-page="index">
+<header class="topbar"><a class="brand" href="index.html">Teoría del <b>riesgo</b></a><span class="eyebrow">Curso visual e interactivo · Matemática</span><a class="al-sitio" href="https://aaramirez.github.io/">← Todos los cursos</a></header>
+<div class="layout">
+<nav class="toc" id="toc" aria-label="Ruta de aprendizaje"></nav>
+<main>
+
+<p class="aviso-curado" role="note">El material de Matemática está en proceso de curado: puede tener errores.</p>
+<header class="hero">
+  <span class="eyebrow">Curso visual e interactivo · Matemática</span>
+  <h1>Cuánto puede perder una aseguradora, y con qué probabilidad se arruina</h1>
+  <p class="lede">Una aseguradora cobra primas fijas y paga siniestros que nadie puede predecir uno por uno. La teoría del riesgo modela esas pérdidas, calcula su distribución agregada, decide cuánto ceder al reaseguro y mide la probabilidad de que el capital no alcance. El curso recorre ese camino con demostraciones completas y termina en los extremos y las medidas de riesgo que hoy usan aseguradoras y bancos.</p>
+</header>
+
+<section>
+  <h2>Cómo usar este curso</h2>
+  <div class="prose">
+    <p><b>Estado.</b> El curso está en preparación. La <a href="temario.html">tabla de contenido</a> ya tiene los 15 capítulos con sus secciones y sus laboratorios, y está en revisión.</p>
+    <p><b>Para quién es.</b> Para quien ya leyó Matemática actuarial (primas, pérdida del asegurador y su varianza) y Procesos estocásticos (procesos de Poisson, martingalas a tiempo discreto y paseos al azar). Ayuda haber visto los teoremas límite de Probabilidades avanzadas.</p>
+    <p><b>Cómo está hecho.</b> Un hilo recorre el curso: la cartera de seguros de automóvil de una aseguradora pequeña, con su número de siniestros y sus montos, que se modela, se reasegura, se somete a la ruina y al final se mide con VaR y *expected shortfall*. Los laboratorios dejan mover la distribución, el capital o la retención y ver la consecuencia; las prácticas usan R (`actuar`, `evd`, `fitdistrplus`) o Python (NumPy, SciPy). Es un nodo final del grafo. La aplicación en la empresa está en Ciencia de datos actuariales y en Gestión de riesgos.</p>
+  </div>
+</section>
+
+<details class="stage" id="temario" open><summary><h2><span class="pn">Empieza aquí</span> Tabla de contenido</h2></summary>
+  <div class="mods">
+    <a class="mod" href="temario.html"><span class="n">≡</span><b>Tabla de contenido</b><p>Cada capítulo con sus secciones y sus laboratorios.</p></a>
+  </div>
+</details>
+
+<details class="stage" id="parte-1" open><summary><h2><span class="pn">Parte 1</span> Decidir ante el riesgo</h2><span class="cuenta" data-etapa-cuenta="1"></span></summary>
+  <div class="mods">
+    <div class="mod soon" data-id="utilidad-esperada"><span class="n">01</span><b>Decisiones bajo incertidumbre y utilidad esperada</b><p>Del criterio del valor esperado a la utilidad esperada, y cómo se construye una función de utilidad.</p></div>
+    <div class="mod soon" data-id="aversion-al-riesgo-y-seguro"><span class="n">02</span><b>Aversión al riesgo, prima máxima y seguro óptimo</b><p>Las funciones de utilidad clásicas, la medida de Arrow-Pratt y por qué el deducible es el contrato óptimo.</p></div>
+    <div class="mod soon" data-id="principios-de-prima"><span class="n">03</span><b>Principios de cálculo de primas</b><p>Prima pura, recargo de seguridad y las reglas que convierten una distribución de pérdida en un precio.</p></div>
+  </div>
+</details>
+
+<details class="stage" id="parte-2" open><summary><h2><span class="pn">Parte 2</span> Pérdidas agregadas</h2><span class="cuenta" data-etapa-cuenta="2"></span></summary>
+  <div class="mods">
+    <div class="mod soon" data-id="modelo-individual"><span class="n">04</span><b>Teoría individual del riesgo</b><p>La suma de las pérdidas de n pólizas independientes: convoluciones, funciones generatrices y aproximación normal.</p></div>
+    <div class="mod soon" data-id="distribuciones-de-severidad"><span class="n">05</span><b>Distribuciones de la cuantía de la reclamación</b><p>Las familias para modelar el monto de un siniestro y cómo cambian con deducibles y límites.</p></div>
+    <div class="mod soon" data-id="distribuciones-de-frecuencia"><span class="n">06</span><b>Distribuciones del número de siniestros</b><p>Poisson, binomial y binomial negativa, la clase (a, b, 0) y la mezcla que explica la sobredispersión.</p></div>
+    <div class="mod soon" data-id="modelo-colectivo"><span class="n">07</span><b>Teoría colectiva del riesgo</b><p>Sumas aleatorias de siniestros: Poisson compuesta, binomial negativa compuesta, Panjer y las aproximaciones.</p></div>
+  </div>
+</details>
+
+<details class="stage" id="parte-3" open><summary><h2><span class="pn">Parte 3</span> Reaseguro y solvencia</h2><span class="cuenta" data-etapa-cuenta="3"></span></summary>
+  <div class="mods">
+    <div class="mod soon" data-id="reaseguro"><span class="n">08</span><b>El reaseguro: formas y primas</b><p>Contratos proporcionales y no proporcionales, su efecto en la distribución retenida y su prima.</p></div>
+    <div class="mod soon" data-id="solvencia-y-retencion"><span class="n">09</span><b>La solvencia del asegurador y la retención óptima</b><p>La probabilidad de que el capital alcance en un período y cómo fijar plenos óptimos por línea.</p></div>
+  </div>
+</details>
+
+<details class="stage" id="parte-4" open><summary><h2><span class="pn">Parte 4</span> Ruina</h2><span class="cuenta" data-etapa-cuenta="4"></span></summary>
+  <div class="mods">
+    <div class="mod soon" data-id="modelo-de-cramer-lundberg"><span class="n">10</span><b>El problema de la ruina y el modelo de Cramér-Lundberg</b><p>El proceso de excedente, el coeficiente de ajuste y la desigualdad de Lundberg.</p></div>
+    <div class="mod soon" data-id="ruina-con-colas-pesadas"><span class="n">11</span><b>Teoría de la ruina para distribuciones con colas pesadas</b><p>Cuando no existe el coeficiente de ajuste: distribuciones subexponenciales y su ruina asintótica.</p></div>
+  </div>
+</details>
+
+<details class="stage" id="parte-5" open><summary><h2><span class="pn">Parte 5</span> Extremos y medidas de riesgo</h2><span class="cuenta" data-etapa-cuenta="5"></span></summary>
+  <div class="mods">
+    <div class="mod soon" data-id="valores-extremos"><span class="n">12</span><b>Fluctuaciones de los máximos y teoría de valores extremos</b><p>Las leyes límite de los máximos y sus dominios de atracción.</p></div>
+    <div class="mod soon" data-id="estadistica-de-extremos"><span class="n">13</span><b>Eventos extremos: análisis de datos y métodos estadísticos</b><p>Máximos por bloques, excesos sobre un umbral y la Pareto generalizada.</p></div>
+    <div class="mod soon" data-id="valor-en-riesgo"><span class="n">14</span><b>Métodos de medición de riesgo: valor en riesgo y pérdida máxima</b><p>El VaR como cuantil, sus tres métodos de cálculo y la pérdida máxima como alternativa.</p></div>
+    <div class="mod soon" data-id="medidas-coherentes"><span class="n">15</span><b>Teoría de riesgo coherente</b><p>Los axiomas de Artzner y coautores, por qué el VaR no los cumple y qué medidas sí.</p></div>
+  </div>
+</details>
+
+
+
+<nav class="pager" id="pager" aria-label="Capítulo anterior y siguiente"></nav>
+</main>
+</div>
+<footer><span>Curso abierto de aaramirez.github.io.</span><span>Sitio publicado: <a href="https://github.com/aaramirez/mate-teoria-del-riesgo" target="_blank" rel="noopener">github.com/aaramirez/mate-teoria-del-riesgo</a></span></footer>
+</div>
+<script src="assets/lab.js"></script>
+</body>
+</html>
