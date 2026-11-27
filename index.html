@@ -12,7 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Teoría del riesgo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="La matemática de las pérdidas aleatorias: utilidad esperada y seguro óptimo, principios de prima, modelos individual y colectivo, reaseguro y solvencia, teoría de la ruina de Cramér-Lundberg, valores extremos, valor en riesgo y medidas coherentes de riesgo.">
+<meta name="description" content="La matemática de las pérdidas aleatorias: utilidad esperada y seguro óptimo, principios de prima, modelos individual y colectivo, tarificación con GLM, credibilidad y *bonus-malus*, reservas estocásticas, reaseguro y solvencia, teoría de la ruina de Cramér-Lundberg, valores extremos y catástrofes, valor en riesgo, medidas coherentes y agregación del capital de solvencia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap">
@@ -33,15 +33,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="hero">
   <span class="eyebrow">Curso visual e interactivo · Matemática</span>
   <h1>Cuánto puede perder una aseguradora, y con qué probabilidad se arruina</h1>
-  <p class="lede">Una aseguradora cobra primas fijas y paga siniestros que nadie puede predecir uno por uno. La teoría del riesgo modela esas pérdidas, calcula su distribución agregada, decide cuánto ceder al reaseguro y mide la probabilidad de que el capital no alcance. El curso recorre ese camino con demostraciones completas y termina en los extremos y las medidas de riesgo que hoy usan aseguradoras y bancos.</p>
+  <p class="lede">Una aseguradora cobra primas fijas y paga siniestros que nadie puede predecir uno por uno. La teoría del riesgo modela esas pérdidas, calcula su distribución agregada, ajusta la prima a cada perfil y a su experiencia, estima lo que ya se debe, decide cuánto ceder al reaseguro y mide la probabilidad de que el capital no alcance. El curso recorre ese camino con demostraciones completas y termina en los extremos, las catástrofes, las medidas de riesgo y el capital de solvencia que hoy usan aseguradoras y bancos.</p>
 </header>
 
 <section>
   <h2>Cómo usar este curso</h2>
   <div class="prose">
-    <p><b>Estado.</b> El curso está en preparación. La <a href="temario.html">tabla de contenido</a> ya tiene los 15 capítulos con sus secciones y sus laboratorios, y está en revisión.</p>
-    <p><b>Para quién es.</b> Para quien ya leyó Matemática actuarial (primas, pérdida del asegurador y su varianza) y Procesos estocásticos (procesos de Poisson, martingalas a tiempo discreto y paseos al azar). Ayuda haber visto los teoremas límite de Probabilidades avanzadas.</p>
-    <p><b>Cómo está hecho.</b> Un hilo recorre el curso: la cartera de seguros de automóvil de una aseguradora pequeña, con su número de siniestros y sus montos, que se modela, se reasegura, se somete a la ruina y al final se mide con VaR y *expected shortfall*. Los laboratorios dejan mover la distribución, el capital o la retención y ver la consecuencia; las prácticas usan R (`actuar`, `evd`, `fitdistrplus`) o Python (NumPy, SciPy). Es un nodo final del grafo. La aplicación en la empresa está en Ciencia de datos actuariales y en Gestión de riesgos.</p>
+    <p><b>Estado.</b> El curso está en preparación. La <a href="temario.html">tabla de contenido</a> ya tiene los 20 capítulos con sus secciones y sus laboratorios, y está en revisión.</p>
+    <p><b>Para quién es.</b> Para quien ya leyó Matemática actuarial (primas, pérdida del asegurador y su varianza) y Procesos estocásticos (procesos de Poisson, cadenas de Markov, martingalas a tiempo discreto y paseos al azar). Ayuda haber visto los teoremas límite de Probabilidades avanzadas y, para la tarificación y las reservas, el modelo lineal generalizado de Modelos lineales.</p>
+    <p><b>Cómo está hecho.</b> Un hilo recorre el curso: la cartera de seguros de automóvil de una aseguradora pequeña, con su número de siniestros y sus montos, que se modela, se tarifica por perfil y por experiencia, se reserva, se reasegura, se somete a la ruina y al final se mide con VaR, *expected shortfall* y el capital de solvencia; para las catástrofes se le suma una cartera de hogar en la costa. Los laboratorios dejan mover la distribución, el capital, la retención o la correlación y ver la consecuencia; las prácticas usan R (`actuar`, `ChainLadder`, `evd`, `fitdistrplus`) o Python (NumPy, SciPy, `statsmodels`, *chainladder*). Es un nodo final del grafo. La aplicación en la empresa está en Ciencia de datos actuariales y en Gestión de riesgos.</p>
   </div>
 </section>
 
@@ -68,26 +68,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </details>
 
-<details class="stage" id="parte-3" open><summary><h2><span class="pn">Parte 3</span> Reaseguro y solvencia</h2><span class="cuenta" data-etapa-cuenta="3"></span></summary>
+<details class="stage" id="parte-3" open><summary><h2><span class="pn">Parte 3</span> Aprender de los datos: tarifa, experiencia y reservas</h2><span class="cuenta" data-etapa-cuenta="3"></span></summary>
   <div class="mods">
-    <div class="mod soon" data-id="reaseguro"><span class="n">08</span><b>El reaseguro: formas y primas</b><p>Contratos proporcionales y no proporcionales, su efecto en la distribución retenida y su prima.</p></div>
-    <div class="mod soon" data-id="solvencia-y-retencion"><span class="n">09</span><b>La solvencia del asegurador y la retención óptima</b><p>La probabilidad de que el capital alcance en un período y cómo fijar plenos óptimos por línea.</p></div>
+    <div class="mod soon" data-id="primas-a-priori-con-glm"><span class="n">08</span><b>Primas a priori: tarificación con modelos lineales generalizados</b><p>Frecuencia con Poisson y severidad con gamma, la exposición como *offset* y la tarifa multiplicativa como un GLM con enlace logarítmico.</p></div>
+    <div class="mod soon" data-id="teoria-de-la-credibilidad"><span class="n">09</span><b>Teoría de la credibilidad y sistemas *bonus-malus*</b><p>Cuánto pesa la experiencia propia frente a la de la cartera: fluctuación limitada, Bühlmann, Bühlmann-Straub, su lectura bayesiana y el *bonus-malus* como cadena de Markov.</p></div>
+    <div class="mod soon" data-id="reservas-estocasticas"><span class="n">10</span><b>Reservas estocásticas: triángulos, *chain ladder*, Mack y *bootstrap*</b><p>Lo que ya se debe por siniestros ocurridos, incluidos los no avisados (IBNR), estimado con un modelo que también dice cuánto puede equivocarse.</p></div>
   </div>
 </details>
 
-<details class="stage" id="parte-4" open><summary><h2><span class="pn">Parte 4</span> Ruina</h2><span class="cuenta" data-etapa-cuenta="4"></span></summary>
+<details class="stage" id="parte-4" open><summary><h2><span class="pn">Parte 4</span> Reaseguro, solvencia y ruina</h2><span class="cuenta" data-etapa-cuenta="4"></span></summary>
   <div class="mods">
-    <div class="mod soon" data-id="modelo-de-cramer-lundberg"><span class="n">10</span><b>El problema de la ruina y el modelo de Cramér-Lundberg</b><p>El proceso de excedente, el coeficiente de ajuste y la desigualdad de Lundberg.</p></div>
-    <div class="mod soon" data-id="ruina-con-colas-pesadas"><span class="n">11</span><b>Teoría de la ruina para distribuciones con colas pesadas</b><p>Cuando no existe el coeficiente de ajuste: distribuciones subexponenciales y su ruina asintótica.</p></div>
+    <div class="mod soon" data-id="reaseguro"><span class="n">11</span><b>El reaseguro: formas y primas</b><p>Contratos proporcionales y no proporcionales, su efecto en la distribución retenida y su prima.</p></div>
+    <div class="mod soon" data-id="solvencia-y-retencion"><span class="n">12</span><b>La solvencia del asegurador y la retención óptima</b><p>La probabilidad de que el capital alcance en un período y cómo fijar plenos óptimos por línea.</p></div>
+    <div class="mod soon" data-id="modelo-de-cramer-lundberg"><span class="n">13</span><b>El problema de la ruina y el modelo de Cramér-Lundberg</b><p>El proceso de excedente, el coeficiente de ajuste y la desigualdad de Lundberg.</p></div>
+    <div class="mod soon" data-id="ruina-con-colas-pesadas"><span class="n">14</span><b>Teoría de la ruina para distribuciones con colas pesadas</b><p>Cuando no existe el coeficiente de ajuste: distribuciones subexponenciales y su ruina asintótica.</p></div>
   </div>
 </details>
 
-<details class="stage" id="parte-5" open><summary><h2><span class="pn">Parte 5</span> Extremos y medidas de riesgo</h2><span class="cuenta" data-etapa-cuenta="5"></span></summary>
+<details class="stage" id="parte-5" open><summary><h2><span class="pn">Parte 5</span> Extremos y catástrofes</h2><span class="cuenta" data-etapa-cuenta="5"></span></summary>
   <div class="mods">
-    <div class="mod soon" data-id="valores-extremos"><span class="n">12</span><b>Fluctuaciones de los máximos y teoría de valores extremos</b><p>Las leyes límite de los máximos y sus dominios de atracción.</p></div>
-    <div class="mod soon" data-id="estadistica-de-extremos"><span class="n">13</span><b>Eventos extremos: análisis de datos y métodos estadísticos</b><p>Máximos por bloques, excesos sobre un umbral y la Pareto generalizada.</p></div>
-    <div class="mod soon" data-id="valor-en-riesgo"><span class="n">14</span><b>Métodos de medición de riesgo: valor en riesgo y pérdida máxima</b><p>El VaR como cuantil, sus tres métodos de cálculo y la pérdida máxima como alternativa.</p></div>
-    <div class="mod soon" data-id="medidas-coherentes"><span class="n">15</span><b>Teoría de riesgo coherente</b><p>Los axiomas de Artzner y coautores, por qué el VaR no los cumple y qué medidas sí.</p></div>
+    <div class="mod soon" data-id="valores-extremos"><span class="n">15</span><b>Fluctuaciones de los máximos y teoría de valores extremos</b><p>Las leyes límite de los máximos y sus dominios de atracción.</p></div>
+    <div class="mod soon" data-id="estadistica-de-extremos"><span class="n">16</span><b>Eventos extremos: análisis de datos y métodos estadísticos</b><p>Máximos por bloques, excesos sobre un umbral y la Pareto generalizada.</p></div>
+    <div class="mod soon" data-id="modelos-de-catastrofes"><span class="n">17</span><b>Modelos de catástrofes: curvas de excedencia, PML y bonos catastróficos</b><p>Un catálogo de eventos con su frecuencia y su severidad, las curvas OEP y AEP, el período de retorno y cómo se transfiere la cola al reaseguro y al mercado de capitales.</p></div>
+  </div>
+</details>
+
+<details class="stage" id="parte-6" open><summary><h2><span class="pn">Parte 6</span> Medidas de riesgo y capital</h2><span class="cuenta" data-etapa-cuenta="6"></span></summary>
+  <div class="mods">
+    <div class="mod soon" data-id="valor-en-riesgo"><span class="n">18</span><b>Métodos de medición de riesgo: valor en riesgo y pérdida máxima</b><p>El VaR como cuantil, sus tres métodos de cálculo y la pérdida máxima como alternativa.</p></div>
+    <div class="mod soon" data-id="medidas-coherentes"><span class="n">19</span><b>Teoría de riesgo coherente</b><p>Los axiomas de Artzner y coautores, por qué el VaR no los cumple y qué medidas sí.</p></div>
+    <div class="mod soon" data-id="agregacion-del-capital"><span class="n">20</span><b>Agregación del capital de solvencia: módulos, correlaciones y diversificación</b><p>El capital de solvencia obligatorio por módulos con matrices de correlación, cuánto ahorra la diversificación, dónde deja de valer y qué hace un modelo interno.</p></div>
   </div>
 </details>
 
